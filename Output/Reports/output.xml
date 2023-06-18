@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230618 03:10:27.214" rpa="false" schemaversion="3">
+<suite id="s1" name="E-Commerce-TestRun" source="D:\RobotFramework\PROJECTS\E-commerce_WebSite\TestSuite\E-Commerce-TestRun.robot">
+<test id="s1-t1" name="Upload a local file test" line="32">
+<kw name="START NAVIGATION" library="Comman">
+<arg>${uploadGUIUrl}</arg>
+<arg>${flagUploadGUI}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${Site_url}</arg>
+<arg>Firefox</arg>
+<arg>firefox</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230618 03:10:27.350" level="INFO">Opening browser 'Firefox' to base url 'https://the-internet.herokuapp.com/upload'.</msg>
+<status status="PASS" starttime="20230618 03:10:27.350" endtime="20230618 03:10:35.451"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230618 03:10:36.451" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230618 03:10:35.451" endtime="20230618 03:10:36.451"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${VerificationLogo}</arg>
+<arg>5</arg>
+<arg>Page loaded slowly</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230618 03:10:36.451" endtime="20230618 03:10:36.468"/>
+</kw>
+<status status="PASS" starttime="20230618 03:10:27.350" endtime="20230618 03:10:36.468"/>
+</kw>
+<kw name="UPLOAD A FILE">
+<arg>${localFilePath}</arg>
+<kw name="Choose File" library="SeleniumLibrary">
+<arg>id:file-upload</arg>
+<arg>${filepath}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<msg timestamp="20230618 03:10:36.468" level="INFO">Sending D:\RobotFramework\PROJECTS\E-commerce_WebSite\Resources\POM\TestData\amir.jpg to browser.</msg>
+<status status="PASS" starttime="20230618 03:10:36.468" endtime="20230618 03:10:36.484"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:file-submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230618 03:10:36.484" level="INFO">Clicking element 'id:file-submit'.</msg>
+<status status="PASS" starttime="20230618 03:10:36.484" endtime="20230618 03:10:37.730"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>//h3[contains(.,'File Uploaded!')]</arg>
+<arg>ERROR: File doesn't get uploaded !</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20230618 03:10:37.735" level="INFO">Element '//h3[contains(.,'File Uploaded!')]' is displayed.</msg>
+<status status="PASS" starttime="20230618 03:10:37.730" endtime="20230618 03:10:37.735"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${expectedFile}</var>
+<arg>xpath://div[contains(@id,'uploaded-files')]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230618 03:10:37.758" level="INFO">${expectedFile} = amir.jpg</msg>
+<status status="PASS" starttime="20230618 03:10:37.735" endtime="20230618 03:10:37.758"/>
+</kw>
+<kw name="SAVE ELEMENT TO TXT">
+<arg>${savedfilepath}</arg>
+<arg>${expectedFile}</arg>
+<doc>Save data to a text file</doc>
+<kw name="Create File" library="OperatingSystem">
+<arg>${fileTXTPath}</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<msg timestamp="20230618 03:10:37.758" level="INFO" html="true">Created file '&lt;a href="file://D:\RobotFramework\PROJECTS\E-commerce_WebSite\Output\Outputs\amir.txt"&gt;D:\RobotFramework\PROJECTS\E-commerce_WebSite\Output\Outputs\amir.txt&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230618 03:10:37.758" endtime="20230618 03:10:37.758"/>
+</kw>
+<kw name="Append To File" library="OperatingSystem">
+<arg>${fileTXTPath}</arg>
+<arg>${dataTXT}</arg>
+<doc>Appends the given content to the specified file.</doc>
+<msg timestamp="20230618 03:10:37.758" level="INFO" html="true">Appended to file '&lt;a href="file://D:\RobotFramework\PROJECTS\E-commerce_WebSite\Output\Outputs\amir.txt"&gt;D:\RobotFramework\PROJECTS\E-commerce_WebSite\Output\Outputs\amir.txt&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230618 03:10:37.758" endtime="20230618 03:10:37.758"/>
+</kw>
+<status status="PASS" starttime="20230618 03:10:37.758" endtime="20230618 03:10:37.758"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${expectedFile}</arg>
+<arg>${uploadedFile}</arg>
+<arg>Wrong file name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230618 03:10:37.758" endtime="20230618 03:10:37.767"/>
+</kw>
+<status status="PASS" starttime="20230618 03:10:36.468" endtime="20230618 03:10:37.767"/>
+</kw>
+<kw name="EXIT BROWSER" library="Comman">
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230618 03:10:40.768" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230618 03:10:37.768" endtime="20230618 03:10:40.768"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230618 03:10:40.768" endtime="20230618 03:10:43.384"/>
+</kw>
+<status status="PASS" starttime="20230618 03:10:37.767" endtime="20230618 03:10:43.384"/>
+</kw>
+<doc>Upload a file from local machine</doc>
+<tag>Integration</tag>
+<status status="PASS" starttime="20230618 03:10:27.350" endtime="20230618 03:10:43.384"/>
+</test>
+<doc>E-commerce WebApp Test Run</doc>
+<status status="PASS" starttime="20230618 03:10:27.214" endtime="20230618 03:10:43.384"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Integration</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="E-Commerce-TestRun">E-Commerce-TestRun</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
