@@ -1,6 +1,5 @@
 *** Settings ***
 Library    SeleniumLibrary
-Library    OperatingSystem
 Resource    D:/RobotFramework/PROJECTS/E-commerce_WebSite/Resources/POM/Locators/PagePath.resource
 *** Keywords ***
 START NAVIGATION
@@ -17,10 +16,3 @@ START NAVIGATION
 EXIT BROWSER
     builtin.sleep    3
     close browser
-
-SAVE ELEMENT TO TXT
-    [Documentation]    Save data to a text file
-    [Arguments]    ${fileTXTPath}   ${dataTXT}
-    ${fileTXTexistance}=    Run Keyword And Return Status    File Should Exist    ${fileTXTPath}
-    Run Keyword If    '${fileTXTexistance}'    Create File     ${fileTXTPath}
-    Append To File    ${fileTXTPath}    ${dataTXT}

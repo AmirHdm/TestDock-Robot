@@ -7,6 +7,8 @@ CampanyLogo =   "//img[contains(@alt,'company-branding')]"
 
 #Login Page
 login_page_title ="OrangeHRM"
-dashboardText = "//h6[@class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module'][contains(.,'Dashboard')]"
-UserIcon    = "//span[@class='oxd-userdropdown-tab'][contains(.,'Paul Collings')]"
-LogoutBtn   = "//a[contains(.,'Logout')]"
+dashboardText = "//img[contains(@alt,'client brand banner')]"
+UserIcon    = "//img[contains(@class,'oxd-userdropdown-img')]"
+LogoutBtn   = "//a[@href='/web/index.php/auth/logout']"
+
+flagUploadGUI    =    "//h3[contains(.,'File Uploader')]"

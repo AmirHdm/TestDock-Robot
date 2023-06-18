@@ -6,7 +6,6 @@ Variables    ../Locators/locators.py
 *** Keywords ***
 VERIFY HOME PAGE
                 seleniumlibrary.set screenshot directory        D:/RobotFramework/PROJECTS/E-commerce_WebSite/Output/Screenshots/HomePagePOM/
-                SeleniumLibrary.wait until element is visible    ${dashboardtext}       10      Timeout : Page load
                 seleniumlibrary.title should be    ${home_page_title}      Wrong page title
                 builtin.sleep    2
                 seleniumlibrary.capture page screenshot         POM-Home-Page-screenshot-{index}.png
