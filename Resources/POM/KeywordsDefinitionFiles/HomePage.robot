@@ -5,7 +5,7 @@ Variables    ../Locators/locators.py
 
 *** Keywords ***
 VERIFY HOME PAGE
-                seleniumlibrary.set screenshot directory        D:/RobotFramework/PROJECTS/E-commerce_WebSite/Output/Screenshots/HomePagePOM/
+                seleniumlibrary.set screenshot directory        D:/RobotFramework/PROJECTS/E-commerce_WebSite/Outputs/Screenshots/HomePagePOM/
                 seleniumlibrary.title should be    ${home_page_title}      Wrong page title
                 builtin.sleep    2
                 seleniumlibrary.capture page screenshot         POM-Home-Page-screenshot-{index}.png

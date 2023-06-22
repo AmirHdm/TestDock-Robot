@@ -1,7 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230618 19:40:39.905" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.3 on win32)" generated="20230622 22:08:25.443" rpa="false" schemaversion="3">
 <suite id="s1" name="E-Commerce-TestRun" source="D:\RobotFramework\PROJECTS\E-commerce_WebSite\TestSuite\E-Commerce-TestRun.robot">
-<test id="s1-t1" name="Upload a local file test" line="31">
+<test id="s1-t1" name="Verify LogIn/Out in MHR WEBAPP" line="18">
+<kw name="START NAVIGATION" library="Comman">
+<arg>${home_page_url}</arg>
+<arg>${campanylogo}</arg>
+<arg>firefox</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${SelectedBrowser}' == 'Firefox' or '${SelectedBrowser}' == 'firefox'</arg>
+<arg>Open Browser</arg>
+<arg>${Site_url}</arg>
+<arg>browser=${Firefox}[var1]</arg>
+<arg>alias=${Firefox}[var2]</arg>
+<arg>executable_path=${Firefox}[var3]</arg>
+<arg>ELSE IF</arg>
+<arg>'${SelectedBrowser}' == 'Chrome' or '${SelectedBrowser}' == 'chrome'</arg>
+<arg>Open Browser</arg>
+<arg>${Site_url}</arg>
+<arg>browser=${Chrome}[var1]</arg>
+<arg>alias=${Chrome}[var2]</arg>
+<arg>executable_path=${Chrome}[var3]</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>'${SelectedBrowser}' is not a supported browser.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${Site_url}</arg>
+<arg>browser=${Firefox}[var1]</arg>
+<arg>alias=${Firefox}[var2]</arg>
+<arg>executable_path=${Firefox}[var3]</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230622 22:08:25.587" level="INFO">Opening browser 'Firefox' to base url 'https://opensource-demo.orangehrmlive.com/'.</msg>
+<msg timestamp="20230622 22:08:25.587" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230622 22:08:25.587" endtime="20230622 22:08:38.304"/>
+</kw>
+<status status="PASS" starttime="20230622 22:08:25.587" endtime="20230622 22:08:38.304"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230622 22:08:39.304" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230622 22:08:38.304" endtime="20230622 22:08:39.304"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${VerificationLogo}</arg>
+<arg>timeout=5s</arg>
+<arg>error=Page loaded slowly</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230622 22:08:39.304" endtime="20230622 22:08:39.343"/>
+</kw>
+<status status="PASS" starttime="20230622 22:08:25.587" endtime="20230622 22:08:39.343"/>
+</kw>
+<kw name="GO TO LOGIN PAGE" library="LoginPage">
+<kw name="Set Screenshot Directory" library="SeleniumLibrary">
+<arg>D:/RobotFramework/PROJECTS/E-commerce_WebSite/Outputs/Screenshots/LoginPagePOM</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" starttime="20230622 22:08:39.360" endtime="20230622 22:08:39.361"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${home_page_title}</arg>
+<arg>Wrong page title</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20230622 22:08:39.366" level="INFO">Page title is 'OrangeHRM'.</msg>
+<status status="PASS" starttime="20230622 22:08:39.361" endtime="20230622 22:08:39.366"/>
+</kw>
+<status status="PASS" starttime="20230622 22:08:39.359" endtime="20230622 22:08:39.366"/>
+</kw>
+<kw name="LOGIN" library="LoginPage">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${usernamefield}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230622 22:08:39.369" level="INFO">Typing text 'Admin' into text field '//input[contains(@name,'username')]'.</msg>
+<status status="PASS" starttime="20230622 22:08:39.368" endtime="20230622 22:08:39.453"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${passwordfield}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230622 22:08:39.454" level="INFO">Typing text 'admin123' into text field '//input[contains(@name,'password')]'.</msg>
+<status status="PASS" starttime="20230622 22:08:39.454" endtime="20230622 22:08:39.472"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230622 22:08:41.473" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230622 22:08:39.472" endtime="20230622 22:08:41.473"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>POM-Login-Page-screenshot-{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230622 22:08:41.510" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../Screenshots/LoginPagePOM/POM-Login-Page-screenshot-2023-06-22-22-08-41-55002.png"&gt;&lt;img src="../Screenshots/LoginPagePOM/POM-Login-Page-screenshot-2023-06-22-22-08-41-55002.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230622 22:08:41.473" endtime="20230622 22:08:41.510"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${loginsubmitbtn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230622 22:08:41.510" level="INFO">Clicking button '//button[@type='submit'][contains(.,'Login')]'.</msg>
+<status status="PASS" starttime="20230622 22:08:41.510" endtime="20230622 22:08:42.733"/>
+</kw>
+<status status="PASS" starttime="20230622 22:08:39.367" endtime="20230622 22:08:42.733"/>
+</kw>
+<kw name="VERIFY HOME PAGE" library="HomePage">
+<kw name="Set Screenshot Directory" library="SeleniumLibrary">
+<arg>D:/RobotFramework/PROJECTS/E-commerce_WebSite/Outputs/Screenshots/HomePagePOM/</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" starttime="20230622 22:08:42.736" endtime="20230622 22:08:42.737"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${home_page_title}</arg>
+<arg>Wrong page title</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20230622 22:08:42.739" level="INFO">Page title is 'OrangeHRM'.</msg>
+<status status="PASS" starttime="20230622 22:08:42.737" endtime="20230622 22:08:42.739"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230622 22:08:44.739" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230622 22:08:42.739" endtime="20230622 22:08:44.739"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>POM-Home-Page-screenshot-{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230622 22:08:44.807" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../Screenshots/HomePagePOM/POM-Home-Page-screenshot-2023-06-22-22-08-44-429043.png"&gt;&lt;img src="../Screenshots/HomePagePOM/POM-Home-Page-screenshot-2023-06-22-22-08-44-429043.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230622 22:08:44.739" endtime="20230622 22:08:44.807"/>
+</kw>
+<status status="PASS" starttime="20230622 22:08:42.736" endtime="20230622 22:08:44.807"/>
+</kw>
+<kw name="LOGOUT HOME PAGE" library="HomePage">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath:${UserIcon}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230622 22:08:44.809" level="INFO">Clicking element 'xpath://img[contains(@class,'oxd-userdropdown-img')]'.</msg>
+<status status="PASS" starttime="20230622 22:08:44.809" endtime="20230622 22:08:45.041"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230622 22:08:47.042" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230622 22:08:45.041" endtime="20230622 22:08:47.042"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath:${LogoutBtn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230622 22:08:47.043" level="INFO">Clicking element 'xpath://a[@href='/web/index.php/auth/logout']'.</msg>
+<status status="PASS" starttime="20230622 22:08:47.042" endtime="20230622 22:08:47.877"/>
+</kw>
+<status status="PASS" starttime="20230622 22:08:44.808" endtime="20230622 22:08:47.877"/>
+</kw>
+<kw name="EXIT BROWSER" library="Comman">
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230622 22:08:50.879" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230622 22:08:47.878" endtime="20230622 22:08:50.879"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230622 22:08:50.879" endtime="20230622 22:08:53.516"/>
+</kw>
+<status status="PASS" starttime="20230622 22:08:47.878" endtime="20230622 22:08:53.517"/>
+</kw>
+<doc>A complete Test of WebApp</doc>
+<tag>POM</tag>
+<status status="PASS" starttime="20230622 22:08:25.587" endtime="20230622 22:08:53.517"/>
+</test>
+<test id="s1-t2" name="Upload a local file test" line="27">
 <kw name="START NAVIGATION" library="Comman">
 <arg>${uploadGUIUrl}</arg>
 <arg>${flagUploadGUI}</arg>
@@ -30,26 +195,26 @@
 <arg>alias=${Firefox}[var2]</arg>
 <arg>executable_path=${Firefox}[var3]</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230618 19:40:40.057" level="INFO">Opening browser 'Firefox' to base url 'https://the-internet.herokuapp.com/upload'.</msg>
-<msg timestamp="20230618 19:40:40.057" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
-<status status="PASS" starttime="20230618 19:40:40.057" endtime="20230618 19:40:48.029"/>
+<msg timestamp="20230622 22:08:53.521" level="INFO">Opening browser 'Firefox' to base url 'https://the-internet.herokuapp.com/upload'.</msg>
+<msg timestamp="20230622 22:08:53.521" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230622 22:08:53.517" endtime="20230622 22:09:03.478"/>
 </kw>
-<status status="PASS" starttime="20230618 19:40:40.057" endtime="20230618 19:40:48.029"/>
+<status status="PASS" starttime="20230622 22:08:53.517" endtime="20230622 22:09:03.478"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>1s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230618 19:40:49.029" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20230618 19:40:48.029" endtime="20230618 19:40:49.029"/>
+<msg timestamp="20230622 22:09:04.479" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230622 22:09:03.478" endtime="20230622 22:09:04.479"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
 <arg>${VerificationLogo}</arg>
 <arg>timeout=5s</arg>
 <arg>error=Page loaded slowly</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230618 19:40:49.030" endtime="20230618 19:40:49.058"/>
+<status status="PASS" starttime="20230622 22:09:04.479" endtime="20230622 22:09:04.505"/>
 </kw>
-<status status="PASS" starttime="20230618 19:40:40.057" endtime="20230618 19:40:49.062"/>
+<status status="PASS" starttime="20230622 22:08:53.517" endtime="20230622 22:09:04.505"/>
 </kw>
 <kw name="UPLOAD A FILE">
 <arg>${localFilePath}</arg>
@@ -57,28 +222,28 @@
 <arg>id:file-upload</arg>
 <arg>${filepath}</arg>
 <doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
-<msg timestamp="20230618 19:40:49.062" level="INFO">Sending D:\RobotFramework\PROJECTS\E-commerce_WebSite\Resources\POM\TestData\amir.jpg to browser.</msg>
-<status status="PASS" starttime="20230618 19:40:49.062" endtime="20230618 19:40:49.074"/>
+<msg timestamp="20230622 22:09:04.505" level="INFO">Sending D:\RobotFramework\PROJECTS\E-commerce_WebSite\Resources\POM\TestData\amir.jpg to browser.</msg>
+<status status="PASS" starttime="20230622 22:09:04.505" endtime="20230622 22:09:04.515"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>id:file-submit</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230618 19:40:49.074" level="INFO">Clicking element 'id:file-submit'.</msg>
-<status status="PASS" starttime="20230618 19:40:49.074" endtime="20230618 19:40:50.508"/>
+<msg timestamp="20230622 22:09:04.516" level="INFO">Clicking element 'id:file-submit'.</msg>
+<status status="PASS" starttime="20230622 22:09:04.515" endtime="20230622 22:09:06.755"/>
 </kw>
 <kw name="Element Should Be Visible" library="SeleniumLibrary">
 <arg>//h3[contains(.,'File Uploaded!')]</arg>
 <arg>ERROR: File doesn't get uploaded !</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20230618 19:40:50.522" level="INFO">Element '//h3[contains(.,'File Uploaded!')]' is displayed.</msg>
-<status status="PASS" starttime="20230618 19:40:50.508" endtime="20230618 19:40:50.522"/>
+<msg timestamp="20230622 22:09:06.770" level="INFO">Element '//h3[contains(.,'File Uploaded!')]' is displayed.</msg>
+<status status="PASS" starttime="20230622 22:09:06.755" endtime="20230622 22:09:06.770"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${expectedFile}</var>
 <arg>xpath://div[contains(@id,'uploaded-files')]</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20230618 19:40:50.543" level="INFO">${expectedFile} = amir.jpg</msg>
-<status status="PASS" starttime="20230618 19:40:50.522" endtime="20230618 19:40:50.543"/>
+<msg timestamp="20230622 22:09:06.785" level="INFO">${expectedFile} = amir.jpg</msg>
+<status status="PASS" starttime="20230622 22:09:06.770" endtime="20230622 22:09:06.785"/>
 </kw>
 <kw name="SAVE ELEMENT TO TXT" library="Comman">
 <arg>${savedfilepath}</arg>
@@ -92,11 +257,11 @@
 <kw name="File Should Exist" library="OperatingSystem">
 <arg>${fileTXTPath}</arg>
 <doc>Fails unless the given ``path`` points to an existing file.</doc>
-<msg timestamp="20230618 19:40:50.544" level="INFO" html="true">File '&lt;a href="file://D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt"&gt;D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt&lt;/a&gt;' exists.</msg>
-<status status="PASS" starttime="20230618 19:40:50.544" endtime="20230618 19:40:50.544"/>
+<msg timestamp="20230622 22:09:06.785" level="FAIL">File 'D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt' does not exist.</msg>
+<status status="FAIL" starttime="20230622 22:09:06.785" endtime="20230622 22:09:06.785"/>
 </kw>
-<msg timestamp="20230618 19:40:50.544" level="INFO">${fileTXTexistance} = True</msg>
-<status status="PASS" starttime="20230618 19:40:50.543" endtime="20230618 19:40:50.544"/>
+<msg timestamp="20230622 22:09:06.785" level="INFO">${fileTXTexistance} = False</msg>
+<status status="PASS" starttime="20230622 22:09:06.785" endtime="20230622 22:09:06.785"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
 <arg>'${fileTXTexistance}'</arg>
@@ -106,58 +271,59 @@
 <kw name="Create File" library="OperatingSystem">
 <arg>${fileTXTPath}</arg>
 <doc>Creates a file with the given content and encoding.</doc>
-<msg timestamp="20230618 19:40:50.544" level="INFO" html="true">Created file '&lt;a href="file://D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt"&gt;D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt&lt;/a&gt;'.</msg>
-<status status="PASS" starttime="20230618 19:40:50.544" endtime="20230618 19:40:50.544"/>
+<msg timestamp="20230622 22:09:06.789" level="INFO" html="true">Created file '&lt;a href="file://D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt"&gt;D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230622 22:09:06.785" endtime="20230622 22:09:06.789"/>
 </kw>
-<status status="PASS" starttime="20230618 19:40:50.544" endtime="20230618 19:40:50.544"/>
+<status status="PASS" starttime="20230622 22:09:06.785" endtime="20230622 22:09:06.789"/>
 </kw>
 <kw name="Append To File" library="OperatingSystem">
 <arg>${fileTXTPath}</arg>
 <arg>${dataTXT}</arg>
 <doc>Appends the given content to the specified file.</doc>
-<msg timestamp="20230618 19:40:50.544" level="INFO" html="true">Appended to file '&lt;a href="file://D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt"&gt;D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt&lt;/a&gt;'.</msg>
-<status status="PASS" starttime="20230618 19:40:50.544" endtime="20230618 19:40:50.544"/>
+<msg timestamp="20230622 22:09:06.790" level="INFO" html="true">Appended to file '&lt;a href="file://D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt"&gt;D:\RobotFramework\PROJECTS\E-commerce_WebSite\Outputs\OutputFiles\amir.txt&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20230622 22:09:06.789" endtime="20230622 22:09:06.790"/>
 </kw>
-<status status="PASS" starttime="20230618 19:40:50.543" endtime="20230618 19:40:50.544"/>
+<status status="PASS" starttime="20230622 22:09:06.785" endtime="20230622 22:09:06.790"/>
 </kw>
 <kw name="Should Contain" library="BuiltIn">
 <arg>${expectedFile}</arg>
 <arg>${uploadedFile}</arg>
 <arg>Wrong file name</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20230618 19:40:50.544" endtime="20230618 19:40:50.544"/>
+<status status="PASS" starttime="20230622 22:09:06.790" endtime="20230622 22:09:06.790"/>
 </kw>
-<status status="PASS" starttime="20230618 19:40:49.062" endtime="20230618 19:40:50.544"/>
+<status status="PASS" starttime="20230622 22:09:04.505" endtime="20230622 22:09:06.790"/>
 </kw>
 <kw name="EXIT BROWSER" library="Comman">
 <kw name="Sleep" library="BuiltIn">
 <arg>3</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230618 19:40:53.546" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230618 19:40:50.544" endtime="20230618 19:40:53.546"/>
+<msg timestamp="20230622 22:09:09.790" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230622 22:09:06.790" endtime="20230622 22:09:09.790"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230618 19:40:53.546" endtime="20230618 19:40:56.166"/>
+<status status="PASS" starttime="20230622 22:09:09.790" endtime="20230622 22:09:12.501"/>
 </kw>
-<status status="PASS" starttime="20230618 19:40:50.544" endtime="20230618 19:40:56.166"/>
+<status status="PASS" starttime="20230622 22:09:06.790" endtime="20230622 22:09:12.501"/>
 </kw>
 <doc>Upload a file from local machine</doc>
 <tag>Integration</tag>
-<status status="PASS" starttime="20230618 19:40:40.057" endtime="20230618 19:40:56.167"/>
+<status status="PASS" starttime="20230622 22:08:53.517" endtime="20230622 22:09:12.501"/>
 </test>
 <doc>E-commerce WebApp Test Run</doc>
-<status status="PASS" starttime="20230618 19:40:39.909" endtime="20230618 19:40:56.169"/>
+<status status="PASS" starttime="20230622 22:08:25.443" endtime="20230622 22:09:12.505"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 <stat pass="1" fail="0" skip="0">Integration</stat>
+<stat pass="1" fail="0" skip="0">POM</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="E-Commerce-TestRun">E-Commerce-TestRun</stat>
+<stat pass="2" fail="0" skip="0" id="s1" name="E-Commerce-TestRun">E-Commerce-TestRun</stat>
 </suite>
 </statistics>
 <errors>

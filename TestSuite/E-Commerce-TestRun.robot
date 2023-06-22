@@ -1,6 +1,5 @@
 *** Settings ***
 Documentation    E-commerce WebApp Test Run
-
 Resource    D:/RobotFramework/PROJECTS/E-commerce_WebSite/Resources/POM/KeywordsDefinitionFiles/Comman.robot
 Resource    D:/RobotFramework/PROJECTS/E-commerce_WebSite/Resources/POM/KeywordsDefinitionFiles/LoginPage.robot
 Resource    D:/RobotFramework/PROJECTS/E-commerce_WebSite/Resources/POM/KeywordsDefinitionFiles/HomePage.robot
@@ -10,12 +9,10 @@ Resource    D:/RobotFramework/PROJECTS/E-commerce_WebSite/Resources/POM/Locators
 Library    OperatingSystem
 Library    SeleniumLibrary
 
-
 *** Variables ***
 ${localFilePath}    D:\\RobotFramework\\PROJECTS\\E-commerce_WebSite\\Resources\\POM\\TestData\\amir.jpg
 ${uploadedFile}     amir.jpg
 ${savedfilepath}    D:\\RobotFramework\\PROJECTS\\E-commerce_WebSite\\Outputs\\OutputFiles\\amir.txt
-
 
 *** Test Cases ***
 Verify LogIn/Out in MHR WEBAPP
@@ -27,7 +24,6 @@ Verify LogIn/Out in MHR WEBAPP
          VERIFY HOME PAGE
          LOGOUT HOME PAGE
          EXIT BROWSER
-
 Upload a local file test
         [Documentation]    Upload a file from local machine
         [Tags]    Integration
